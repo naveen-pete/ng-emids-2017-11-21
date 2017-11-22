@@ -8,9 +8,7 @@ import { Product } from '../models/product';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent {
-  product: Product = new Product();
   products: Product[];
-  showMessage = false;
 
   constructor() {
     this.products = [
@@ -40,14 +38,7 @@ export class ProductsComponent {
     ];
   }
 
-  onSave() {
-    console.log('onSave() method invoked.');
-    this.products.unshift(this.product);
-    this.product = new Product();
-    this.showMessage = true;
-
-    setTimeout(() => {
-      this.showMessage = false;
-    }, 3000);
+  onProductCreated(newProduct) {
+    this.products.unshift(newProduct);
   }
 }
