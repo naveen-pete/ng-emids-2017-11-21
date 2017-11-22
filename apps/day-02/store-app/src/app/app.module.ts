@@ -7,10 +7,17 @@ import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 
+import { LoggerService } from './services/logger.service';
+
 @NgModule({
-  declarations: [AppComponent, ProductsComponent, ProductDetailComponent, ProductFormComponent],
+  declarations: [
+    AppComponent,
+    ProductsComponent,
+    ProductDetailComponent,
+    ProductFormComponent
+  ],
   imports: [BrowserModule, FormsModule],
-  providers: [],
+  providers: [LoggerService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
