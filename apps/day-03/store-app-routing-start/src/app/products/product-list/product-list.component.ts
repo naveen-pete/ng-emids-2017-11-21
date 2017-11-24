@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Product } from '../../models/product';
 import { ProductsService } from '../../services/products.service';
@@ -14,8 +15,9 @@ export class ProductListComponent implements OnInit {
 
   constructor(
     private productsService: ProductsService,
-    private loggingService: LoggingService
-  ) { }
+    private loggingService: LoggingService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.products = this.productsService.getProducts();
@@ -23,5 +25,7 @@ export class ProductListComponent implements OnInit {
 
   onAdd() {
     this.loggingService.logMessage('Product List - Add button clicked.');
+    this.router.navigate(['/products', 'new', 'edit']);
+    // http://localhost:4200/products/new/edit
   }
 }

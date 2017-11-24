@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { 
-  FormGroup, FormControl, Validators, FormBuilder 
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder
 } from '@angular/forms';
 
 import { AppValidators } from '../app-validators';
@@ -24,18 +27,18 @@ export class CustomerFormComponent implements OnInit {
   // Create form using FormGroup & FormControl
   private createForm() {
     this.form = new FormGroup({
-      name: new FormControl('', [
+      name: new FormControl(
+        '',
+        [
           Validators.required,
           Validators.minLength(3),
           AppValidators.cannotContainSpace
         ],
-        AppValidators.shouldBeUnique),
+        AppValidators.shouldBeUnique
+      ),
       contact: new FormGroup({
         phone: new FormControl('', Validators.required),
-        email: new FormControl('', [
-          Validators.required, 
-          Validators.email
-        ])
+        email: new FormControl('', [Validators.required, Validators.email])
       }),
       city: new FormControl('', Validators.required)
     });
@@ -44,18 +47,18 @@ export class CustomerFormComponent implements OnInit {
   // Create form using FormBuilder
   private createFormWithFormBuilder() {
     this.form = this.fb.group({
-      name: ['', [
+      name: [
+        '',
+        [
           Validators.required,
           Validators.minLength(3),
           AppValidators.cannotContainSpace
         ],
-        AppValidators.shouldBeUnique],
+        AppValidators.shouldBeUnique
+      ],
       contact: this.fb.group({
         phone: ['', Validators.required],
-        email: ['', [
-          Validators.required, 
-          Validators.email
-        ]]
+        email: ['', [Validators.required, Validators.email]]
       }),
       city: ['', Validators.required]
     });
@@ -81,9 +84,9 @@ export class CustomerFormComponent implements OnInit {
     // Forcing the form into error state
     // let savedSuccessfully = this.customersService.saveCustomer(this.form.value);
     // if(!savedSuccessfully) {
-          this.form.setErrors({
-            invalidCustomer: true
-          });
+    this.form.setErrors({
+      invalidCustomer: true
+    });
     // }
     console.log(this.form);
   }

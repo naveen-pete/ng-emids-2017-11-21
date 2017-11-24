@@ -6,9 +6,14 @@ import { NgForm } from '@angular/forms';
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.css']
 })
-export class ProductFormComponent implements OnInit {
+export class ProductFormComponent {
+  myPattern = 'def';
   showMessage = false;
+  @ViewChild('f') form;
   constructor() {}
 
-  ngOnInit() {}
+  onFormSubmit() {
+    console.log('form submitted');
+    console.log(this.form);
+  }
 }
